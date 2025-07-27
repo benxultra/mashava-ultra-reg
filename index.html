@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mashava Ultra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background-color: #ccc; /* Gray background */
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .header h1 {
+      color: #0c2340; /* Dark blue */
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .header h2 {
+      color: #00539C; /* Royal blue */
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 0;
+    }
+
+    .form-section {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    label {
+      display: inline-block;
+      width: 140px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    input, select {
+      width: calc(100% - 150px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .row > div {
+      flex: 1;
+      min-width: 300px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #FF0000; /* Red */
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #cc0000;
+    }
+
+    .confirmation {
+      display: none;
+      margin-top: 20px;
+      color: green;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Mashava Ultra</h1>
+    <h2>Registration Desk</h2>
+  </div>
+
+  <div class="form-section">
+    <form id="registrationForm">
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" name="surname" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+263..." required pattern="^\+?[0-9\s\-]+$">
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="region">Region</label>
+          <select id="region" name="region" required>
+            <option value="">Select Region</option>
+            <option>Gokwe</option>
+            <option>Greater Mashonaland</option>
+            <option>Manicaland North</option>
+            <option>Manicaland South</option>
+            <option>Masvingo</option>
+            <option>Mashonaland West</option>
+            <option>Matabeleland North</option>
+            <option>Matabeleland South</option>
+            <option>Midlands</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="">Select Role</option>
+            <option>Pastor</option>
+            <option>Elder</option>
+            <option>Deacon</option>
+            <option>Delegate</option>
+            <option>Organiser</option>
+            <option>Father</option>
+            <option>Mother</option>
+            <option>Youth</option>
+            <option>Sunday School</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="event">Event</label>
+          <select id="event" name="event" required>
+            <option value="">Select Event</option>
+            <option>Christmas Convention</option>
+            <option>Girls</option>
+            <option>Men</option>
+            <option>Mothers & Easter Convention</option>
+            <option>National Assembly</option>
+            <option>NYC</option>
+            <option>Summer School</option>
+            <option>Winter School</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="amount">Amount Paid</label>
+          <select id="amount" name="amount" required>
+            <option value="">Select Amount</option>
+            <option>$10</option>
+            <option>$15</option>
+            <option>$20</option>
+            <option>$25</option>
+            <option>$30</option>
+            <option>$35</option>
+            <option>$40</option>
+            <option>$50</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="payment">Method of Payment</label>
+          <select id="payment" name="payment" required>
+            <option value="">Select Method</option>
+            <option>Cash</option>
+            <option>Bank Transfer</option>
+            <option>EcoCash</option>
+            <option>Innbucks</option>
+            <option>OneMoney</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+
+    <p class="confirmation" id="confirmationMsg">✅ Registration successful!</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const confirmation = document.getElementById('confirmationMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      confirmation.style.display = 'block';
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
